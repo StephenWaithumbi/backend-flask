@@ -11,13 +11,13 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://fundraser_db_user:8AJFHJ47wigWywkFGCyAWiG2yKPmElbb@dpg-cufnnqt6l47c73fl8g3g-a.oregon-postgres.render.com/fundraser_db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SECRET_KEY"] = "your_secret_key"
 app.config['SESSION_COOKIE_SAMESITE'] = 'None'
 app.config['SESSION_COOKIE_SECURE'] = False
 
-CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}}, supports_credentials=True)
+CORS(app, resources={r"/*": {"origins": "https://fundraising-app-kappa.vercel.app"}}, supports_credentials=True)
 
 db.init_app(app)
 bcrypt.init_app(app)
